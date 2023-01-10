@@ -1,5 +1,9 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
+# Projects
+projects/s11-asincrona
+projects/s12-asincrona
+
 # Compiled output
 /dist
 /tmp
