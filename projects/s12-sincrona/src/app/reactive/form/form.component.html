@@ -1,0 +1,54 @@
+<section class="container form-container col-sm-8 col-md-6 col-xl-5">
+    <h1 class="text-center">Form Data</h1>
+    <form [formGroup]="registroForm" (ngSubmit)="onSubmit()">
+
+        <!--************ INPUT NOMBRE ************-->
+        <section class="form-group m-3">
+            <label for="nombre">Nombre:</label>
+            <input type="text" class="form-control" id="nombre" formControlName="nombres" [ngStyle]="{'border-color': nombres?.invalid && (nombres?.dirty || nombres?.touched) ? '#dc3545' : 'gray'}">
+
+            <!--************ Validacion Nombre ************-->
+            <section *ngIf="nombres?.touched && nombres?.errors?.['required'] then requerido"></section>
+        </section>
+
+        <!--************ INPUT APELLIDOS ************-->
+        <section class="form-group m-3">
+            <label for="apellidos">Apellidos:</label>
+            <input type="text" class="form-control" formControlName="apellidos" [ngStyle]="{'border-color': apellidos?.invalid && (apellidos?.dirty || apellidos?.touched) ? '#dc3545' : 'gray'}">
+
+            <!--************ Validacion APELLIDOS ************-->
+            <section *ngIf="apellidos?.touched && apellidos?.errors?.['required'] then requerido"></section>
+        </section>
+
+        <!--************ INPUT DNI ************-->
+        <section class="form-group m-3">
+            <label for="dni">Dni:</label>
+            <input type="text" maxlength="8" class="form-control" required [ngStyle]="{'border-color': dni?.invalid && (dni?.dirty || dni?.touched) ? '#dc3545' : 'gray'}" formControlName="dni">
+
+            <!--************ Validacion DNI ************-->
+            <section *ngIf="dni?.invalid && (dni?.dirty || dni?.touched)">
+                <section *ngIf="dni?.errors?.['required'] then requerido"></section>
+                <section *ngIf="dni?.errors?.['pattern']" class="alert alert-danger mt-3">El DNI debe ser solo 8 digitos</section>
+            </section>
+        </section>
+
+        <!--************ INPUT CIUDAD ************-->
+        <section class="form-group m-3">
+            <label for="ciudad">Ciudad:</label>
+            <input type="text" class="form-control" formControlName="ciudad" [ngStyle]="{'border-color': ciudad?.invalid && (ciudad?.dirty || ciudad?.touched) ? '#dc3545' : 'gray'}">
+
+            <!--************ Validacion CIUDAD ************-->
+            <section *ngIf="ciudad?.touched && ciudad?.errors?.['required'] then requerido"></section>
+        </section>
+
+        <!--************ BUTTON ************-->
+        <section class="form-group m-3">
+            <input type="submit" value="Submit" class="btn btn-primary" [disabled]="registroForm.invalid" (click)="Refrescar()">
+            <section class="alert alert-success mt-3 mensaje" *ngIf="registroForm.valid" [ngStyle]="{'text-align': 'center' }">Registro Exitoso</section>
+        </section>
+    </form>
+</section>
+
+<ng-template #requerido>
+    <section class="alert alert-danger mt-3">Este campo es obligatorio</section>
+</ng-template>

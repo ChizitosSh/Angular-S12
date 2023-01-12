@@ -9,7 +9,8 @@
     "test": "ng test",
     "s11-sincrona-start": "ng serve --project=\"s11-sincrona\" --port 4200",
     "s11-asincrona-start": "ng serve --project=\"s11-asincrona\" --port 4201",
-    "s12-asincrona-start": "ng serve --project=\"s12-asincrona\" --port 4202"
+    "s12-asincrona-start": "ng serve --project=\"s12-asincrona\" --port 4202",
+    "s12-sincrona-start": "ng serve --project=\"s12-sincrona\" --port 4203"
   },
   "private": true,
   "dependencies": {
